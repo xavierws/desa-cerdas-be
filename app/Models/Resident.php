@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Resident extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'nik',
+        'address',
+        'city',
+        'province',
+        'postal_code',
+    ];
+
+    public function user()
+    {
+        return $this->morphOne(User::class, 'userable');
+    }
 }

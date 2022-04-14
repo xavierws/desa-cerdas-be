@@ -10,7 +10,7 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
-    public function create(RegisterRequest $request)
+    public function store(RegisterRequest $request)
     {
         $validated = $request->validated();
 

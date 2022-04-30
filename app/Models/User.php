@@ -56,4 +56,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function getNameAttribute()
+    {
+        return $this->userable->name;
+    }
+
+    public function getRoleAttribute()
+    {
+        return $this->role->name;
+    }
+
+    public function getNikAttribute()
+    {
+        return $this->userable->nik;
+    }
 }

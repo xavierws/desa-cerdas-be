@@ -6,12 +6,13 @@ use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function generateToken(LoginRequest $request)
+    public function store(LoginRequest $request)
     {
         $validated = $request->validated();
 
@@ -31,9 +32,11 @@ class LoginController extends Controller
         return SendResponse::handle($data, 'Login berhasil');
     }
 
-    public function show()
+    public function show(Request $request)
     {
+        $user = $request->user();
 
+        return SendResponse::handle($user, 'Permintaan berhasil');
     }
 
     public function destroy()

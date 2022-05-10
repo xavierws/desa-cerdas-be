@@ -39,8 +39,11 @@ class LoginController extends Controller
         return SendResponse::handle($user, 'Permintaan berhasil');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $user = $request->user();
+        $user->tokens->delete();
 
+        return SendResponse::handle($user, 'Logout berhasil');
     }
 }

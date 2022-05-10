@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -14,7 +16,7 @@ class UserController extends Controller
     {
         $user = $request->user();
         $validated = $request->validated();
-        $model = User::where('email', $user->email);
+        $model = User::where('email', $user->email)->first();
 
         $model->email = $validated['email'];
         $model->phone = $validated['phone'];
@@ -25,9 +27,27 @@ class UserController extends Controller
         return SendResponse::handle($user, 'email berhasil diubah');
     }
 
-    public function updatePassword()
+    public function updatePassword(Request $request)
     {
+        $user = $request->user();
+        $model = User::where('email', $user->email)->first();
 
+        if (Hash::check($request->password, $model->password)) {
+            throw ValidationException::withMessages([
+                'password' => ['password salah']
+            ]);
+        }
+
+        if ($request->new_password !== $request->password_confirmation) {
+            throw ValidationException::withMessages([
+                'new_password' => ['password tidak sama dengan konfirmasi passsword']
+            ]);
+        }
+
+        $model->password = Hash::make($request->new_password);
+        $model->save();
+
+        return SendResponse::handle($user, 'Passoword berhasil diubah');
     }
 
     public function destroy(Request $request)

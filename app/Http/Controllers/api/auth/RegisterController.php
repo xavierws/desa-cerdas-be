@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Resident;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -25,7 +26,7 @@ class RegisterController extends Controller
 
         $user = User::create([
             'email' => $validated['email'],
-            'password' => $validated['password'],
+            'password' => Hash::make($validated['password']),
             'phone' => $validated['phone'],
             'role_id' => 2,
             'userable_id' => $resident->id,

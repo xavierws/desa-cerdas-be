@@ -39,4 +39,24 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
-Route::get('/wisata', [WisataController::class, 'show']);
+Route::get('/wisata', [WisataController::class, 'pageShow']);
+Route::post('/wisata/store', [WisataController::class, 'pageStore']);
+
+Route::get('/wisata/category', [WisataController::class, 'categoryList']);
+Route::post('/wisata/category/store', [WisataController::class, 'categoryStore']);
+Route::put('/wisata/category/update', [WisataController::class, 'categoryUpdate']);
+Route::delete('/wisata/category/delete', [WisataController::class, 'categoryDelete']);
+
+Route::get('/wisata/list', [WisataController::class, 'wisataList']);
+Route::post('/wisata/list/store', [WisataController::class, 'wisataListStore']);
+Route::put('/wisata/list/update', [WisataController::class, 'wisataListUpdate']);
+Route::delete('/wisata/list/delete', [WisataController::class, 'wisataListDelete']);
+
+Route::get('/wisata/images', [WisataController::class, 'wisataImagesList']);
+Route::post('/wisata/images/store', [WisataController::class, 'wisataImagesStore']);
+Route::put('/wisata/images/update', [WisataController::class, 'wisataImagesUpdate']);
+Route::delete('/wisata/images/delete', [WisataController::class, 'wisataImagesDelete']);
+
+
+
+

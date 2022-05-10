@@ -22,7 +22,6 @@ class WisataList extends Migration
             $table->string('web_url');
             $table->string('phone');
             $table->string('information');
-            $table->integer('imagelist_id');
             $table->foreignId('wisata_category_id')
                 ->constrained('wisata_category')
                 ->cascadeOnUpdate()

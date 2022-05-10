@@ -12,4 +12,13 @@ class SendResponse
             'data' => $data,
         ]);
     }
+
+    public static function error($message)
+    {
+        return response()->json([
+            'status' => 500,
+            'message' => $message,
+            'data' => '',
+        ]);
+    }
 }

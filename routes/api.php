@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/user')->group(function () {
         Route::put('/update-email', [UserController::class, 'update']);
         Route::delete('/delete', [UserController::class, 'destroy']);
+        Route::put('/update-password', [UserController::class, 'updatePassword']);
     });
 
     //Resident Profile Management

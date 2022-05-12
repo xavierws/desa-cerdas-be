@@ -150,9 +150,9 @@ class WisataController extends Controller
         return SendResponse::handle($wisataImages, "success");
     }
 
-    public function wisataImagesList()
+    public function wisataImagesList($id)
     {
-        $wisataImages = WisataImages::all();
+        $wisataImages = WisataImages::where("wisata_list_id", $id)->get();
         return SendResponse::handle($wisataImages, "success");
     }
     public function wisataImagesUpdate(Request $request)

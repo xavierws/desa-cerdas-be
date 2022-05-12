@@ -52,7 +52,7 @@ Route::post('/wisata/list/store', [WisataController::class, 'wisataListStore']);
 Route::put('/wisata/list/update', [WisataController::class, 'wisataListUpdate']);
 Route::delete('/wisata/list/delete', [WisataController::class, 'wisataListDelete']);
 
-Route::get('/wisata/images', [WisataController::class, 'wisataImagesList']);
+Route::get('/wisata/images/{id}', [WisataController::class, 'wisataImagesList']);
 Route::post('/wisata/images/store', [WisataController::class, 'wisataImagesStore']);
 Route::put('/wisata/images/update', [WisataController::class, 'wisataImagesUpdate']);
 Route::delete('/wisata/images/delete', [WisataController::class, 'wisataImagesDelete']);

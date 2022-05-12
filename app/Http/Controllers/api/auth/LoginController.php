@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\auth;
 use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +37,7 @@ class LoginController extends Controller
     {
         $user = $request->user();
 
-        return SendResponse::handle($user, 'Permintaan berhasil');
+        return SendResponse::handle(new UserResource($user), 'Permintaan berhasil');
     }
 
     public function destroy(Request $request)

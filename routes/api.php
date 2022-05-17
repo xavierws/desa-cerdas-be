@@ -35,7 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Resident Profile Management
     Route::prefix('/resident')->group(function () {
-
+        Route::put('/update', [\App\Http\Controllers\api\ResidentController::class, 'update']);
     });
 });
 

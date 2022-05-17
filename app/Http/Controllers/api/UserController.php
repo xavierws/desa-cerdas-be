@@ -38,7 +38,7 @@ class UserController extends Controller
             ]);
         }
 
-        if ($request->new_password !== $request->password_confirmation) {
+        if ($request->new_password !== $request->password_validation) {
             throw ValidationException::withMessages([
                 'new_password' => ['password tidak sama dengan konfirmasi passsword']
             ]);

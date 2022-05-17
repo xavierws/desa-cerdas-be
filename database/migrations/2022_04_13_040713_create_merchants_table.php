@@ -21,6 +21,7 @@ class CreateMerchantsTable extends Migration
             $table->string('province');
             $table->string('postal_code');
             $table->boolean('is_approved');
+            $table->foreignId('resident_id');
             $table->timestamps();
         });
     }

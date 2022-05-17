@@ -16,5 +16,11 @@ class Merchant extends Model
         'province',
         'postal_code',
         'is_approved',
+        'resident_id',
     ];
+
+    public function resident()
+    {
+        return $this->belongsTo(Resident::class);
+    }
 }

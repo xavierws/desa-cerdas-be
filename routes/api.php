@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\auth\RegisterController;
 use App\Http\Controllers\api\auth\LoginController;
 use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\InfrastrukturController;
 use App\Http\Controllers\WisataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,23 @@ Route::get('/wisata/images/{id}', [WisataController::class, 'wisataImagesList'])
 Route::post('/wisata/images/store', [WisataController::class, 'wisataImagesStore']);
 Route::put('/wisata/images/update', [WisataController::class, 'wisataImagesUpdate']);
 Route::delete('/wisata/images/delete', [WisataController::class, 'wisataImagesDelete']);
+
+Route::get('/infrastruktur/category', [InfrastrukturController::class, 'infrastrukturCategory']);
+Route::post('/infrastruktur/category/store', [InfrastrukturController::class, 'infrastrukturStore']);
+Route::put('/infrastruktur/category/update', [InfrastrukturController::class, 'infrastrukturUpdate']);
+Route::delete('/infrastruktur/category/delete', [InfrastrukturController::class, 'infrastrukturDelete']);
+
+Route::post('/infrastruktur/list', [InfrastrukturController::class, 'infrastrukturList']);
+Route::post('/infrastruktur/list/store', [InfrastrukturController::class, 'infrastrukturListStore']);
+Route::put('/infrastruktur/list/update', [InfrastrukturController::class, 'infrastrukturListUpdate']);
+Route::delete('/infrastruktur/list/delete', [InfrastrukturController::class, 'infrastrukturistDelete']);
+
+Route::get('/infrastruktur/images/{id}', [InfrastrukturController::class, 'infrastrukturImagesList']);
+Route::post('/infrastruktur/images/store', [InfrastrukturController::class, 'infrastrukturImagesStore']);
+Route::put('/infrastruktur/images/update', [InfrastrukturController::class, 'infrastrukturImagesUpdate']);
+Route::delete('/infrastruktur/images/delete', [InfrastrukturController::class, 'infrastrukturImagesDelete']);
+
+
 
 
 

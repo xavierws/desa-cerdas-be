@@ -66,7 +66,7 @@ Route::delete('/infrastruktur/category/delete', [InfrastrukturController::class,
 Route::post('/infrastruktur/list', [InfrastrukturController::class, 'infrastrukturList']);
 Route::post('/infrastruktur/list/store', [InfrastrukturController::class, 'infrastrukturListStore']);
 Route::put('/infrastruktur/list/update', [InfrastrukturController::class, 'infrastrukturListUpdate']);
-Route::delete('/infrastruktur/list/delete', [InfrastrukturController::class, 'infrastrukturistDelete']);
+Route::delete('/infrastruktur/list/delete', [InfrastrukturController::class, 'infrastrukturListDelete']);
 
 Route::get('/infrastruktur/images/{id}', [InfrastrukturController::class, 'infrastrukturImagesList']);
 Route::post('/infrastruktur/images/store', [InfrastrukturController::class, 'infrastrukturImagesStore']);

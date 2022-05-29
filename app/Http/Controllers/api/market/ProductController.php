@@ -23,7 +23,17 @@ class ProductController extends Controller
             'merchant_id' => $merchant->id,
         ]);
 
-        return SendResponse::handle($product, 'Produk berhasil dibuat')
+        return SendResponse::handle($product, 'Produk berhasil dibuat');
+    }
+
+    public function index()
+    {
+
+    }
+
+    public function show()
+    {
+        
     }
 
     public function update()

@@ -6,6 +6,8 @@ use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\market\MerchantController;
 use App\Http\Controllers\InfrastrukturController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\api\ResidentController;
+use App\Http\Controllers\api\market\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Resident Profile Management
     Route::prefix('/resident')->group(function () {
-        Route::put('/update', [\App\Http\Controllers\api\ResidentController::class, 'update']);
+        Route::put('/update', [ResidentController::class, 'update']);
     });
 
     //Merchant Management
@@ -47,6 +49,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
         //only used by admin
         Route::put('/approve', [MerchantController::class, 'approve']);
+    });
+
+    //Product Management
+    Route::prefix('/product')->group(function () {
+        Route::post('/store', [ProductController::class, 'store']);
     });
 });
 

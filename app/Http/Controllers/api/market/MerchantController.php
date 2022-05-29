@@ -30,6 +30,19 @@ class MerchantController extends Controller
         return SendResponse::handle($merchant, 'Toko berhasil dibuat');
     }
 
+    public function index()
+    {
+        //TO DO: merchant that is not approved yet should not be returned
+        $merchants = Merchant::all();
+
+
+    }
+
+    public function show()
+    {
+
+    }
+
     public function update(MerchantStoreRequest $request)
     {
         $user = $request->user();
@@ -53,7 +66,7 @@ class MerchantController extends Controller
     }
 
     /**
-     * use by admin to approve merchant
+     * used by admin to approve merchant
      *
      * @param Request $request
      * @param $merchantId

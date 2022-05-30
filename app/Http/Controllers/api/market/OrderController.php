@@ -10,6 +10,7 @@ use App\Http\Resources\OrderCollection;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
@@ -67,9 +68,17 @@ class OrderController extends Controller
         return SendResponse::handle($order, 'Order selesai');
     }
 
-    public function indexByMerchant(Request $request, $merchantId)
+    public function indexByMerchant(Request $request)
     {
-        $orders = Order::where('merchant_id', $merchantId);
+        $user = $request->user();
+        $merchant = $user->userable->merchant;
+        if (!$merchant) {
+            throw ValidationException::withMessages([
+                'merchant' => ['merchant tidak ditemukan']
+            ]);
+        }
+
+        $orders = Order::where('merchant_id', $merchant->id);
         if ($request->has('status')) {
             $orders = $orders->where('status', $request->query('status'));
         }
@@ -77,9 +86,11 @@ class OrderController extends Controller
         return new OrderCollection($orders->get());
     }
 
-    public function indexByResident(Request $request, $residentId)
+    public function indexByResident(Request $request)
     {
-        $orders = Order::where('resident_id', $residentId);
+        $user = $request->user();
+        $resident = $user->userable;
+        $orders = Order::where('resident_id', $resident->id);
         if ($request->has('status')) {
             $orders = $orders->where('status', $request->query('status'));
         }

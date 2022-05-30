@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('price');
             $table->string('status');
-            $table->foreignId('cart_id');
             $table->foreignId('resident_id');
             $table->foreignId('merchant_id');
             $table->timestamps();

@@ -8,6 +8,7 @@ use App\Http\Controllers\InfrastrukturController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\api\ResidentController;
 use App\Http\Controllers\api\market\ProductController;
+use App\Http\Controllers\api\market\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/product')->group(function () {
         Route::post('/store', [ProductController::class, 'store']);
         Route::get('/list/{merchantId}', [ProductController::class, 'index']);
+    });
+
+    //Order Management
+    Route::prefix('/order')->group(function () {
+        Route::post('/checkout', [OrderController::class, 'store']);
     });
 });
 

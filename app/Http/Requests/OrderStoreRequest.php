@@ -24,9 +24,9 @@ class OrderStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'price' => 'integer|required',
             'merchant_id' => 'required',
-            'items' => 'required'
+            'items.*.quantity' => 'integer|required',
+            'items.*.product_id' => 'integer|required',
         ];
     }
 }

@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     public function show()
     {
-        
+
     }
 
     public function update()

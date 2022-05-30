@@ -46,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/merchant')->group(function () {
         Route::post('/store', [MerchantController::class, 'store']);
         Route::put('/update', [MerchantController::class, 'update']);
+        Route::get('/list', [MerchantController::class, 'index']);
 
         //only used by admin
         Route::put('/approve', [MerchantController::class, 'approve']);

@@ -14,6 +14,10 @@ class MerchantCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'status' => 200,
+            'message' => 'success',
+            'data' => $this->collection,
+        ];
     }
 }

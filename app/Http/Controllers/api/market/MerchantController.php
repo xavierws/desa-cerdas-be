@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\market;
 use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MerchantStoreRequest;
+use App\Http\Resources\MerchantCollection;
 use App\Models\Merchant;
 use Illuminate\Http\Client\Request;
 use Illuminate\Validation\ValidationException;
@@ -33,9 +34,9 @@ class MerchantController extends Controller
     public function index()
     {
         //TO DO: merchant that is not approved yet should not be returned
-        $merchants = Merchant::all();
+        $merchants = Merchant::paginate();
 
-
+        return new MerchantCollection($merchants);
     }
 
     public function show()

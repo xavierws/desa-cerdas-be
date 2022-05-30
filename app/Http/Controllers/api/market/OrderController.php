@@ -67,18 +67,24 @@ class OrderController extends Controller
         return SendResponse::handle($order, 'Order selesai');
     }
 
-    public function indexByMerchant($merchantId)
+    public function indexByMerchant(Request $request, $merchantId)
     {
-        $orders = Order::where('merchant_id', $merchantId)->get();
+        $orders = Order::where('merchant_id', $merchantId);
+        if ($request->has('status')) {
+            $orders = $orders->where('status', $request->query('status'));
+        }
 
-        return new OrderCollection($orders);
+        return new OrderCollection($orders->get());
     }
 
-    public function indexByResident($residentId)
+    public function indexByResident(Request $request, $residentId)
     {
-        $orders = Order::where('resident_id', $residentId)->get();
+        $orders = Order::where('resident_id', $residentId);
+        if ($request->has('status')) {
+            $orders = $orders->where('status', $request->query('status'));
+        }
 
-        return new OrderCollection($orders);
+        return new OrderCollection($orders->get());
     }
 
     public function show($orderId)

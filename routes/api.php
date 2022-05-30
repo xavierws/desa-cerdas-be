@@ -76,9 +76,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{orderId}', [OrderController::class, 'show']);
 
         //list order for merchant
+        //filter using status key
         Route::get('/merchant/{merchantId}', [OrderController::class, 'indexByMerchant']);
 
         //list Order for resident
+        //filter using status key
         Route::get('/resident/{residentId}', [OrderController::class, 'indexByResident']);
     });
 });

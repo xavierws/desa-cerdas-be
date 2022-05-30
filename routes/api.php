@@ -73,7 +73,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/finish', [OrderController::class, 'finishOrder']);
 
         //show order
-        Route::get('/{orderId}', [OrderController::class, 'show']);
+        Route::get('/show/{orderId}', [OrderController::class, 'show']);
 
         //list order for merchant
         //filter using status key

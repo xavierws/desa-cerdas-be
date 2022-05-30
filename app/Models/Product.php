@@ -21,4 +21,9 @@ class Product extends Model
     {
         return $this->belongsTo(Merchant::class);
     }
+
+    public function image()
+    {
+        return $this->hasOne(ProductImage::class);
+    }
 }

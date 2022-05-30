@@ -16,7 +16,7 @@ class Order extends Model
         'merchant_id',
     ];
 
-    protected $with = ['carts'];
+    protected $with = ['carts.product'];
 
     public function carts()
     {

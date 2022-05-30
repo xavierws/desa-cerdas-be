@@ -23,7 +23,7 @@ class OrderController extends Controller
 
         $price = CountPrice::handle($validated['items']);
         $order = Order::create([
-            'price' => $price,
+            'price' => $price + 5000,
             'status' => OrderHelper::Status['WAITING_APPROVAL'],
             'resident_id' => $resident->id,
             'merchant_id' => $validated['merchant_id'],

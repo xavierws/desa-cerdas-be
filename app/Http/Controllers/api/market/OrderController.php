@@ -83,6 +83,11 @@ class OrderController extends Controller
             $orders = $orders->where('status', $request->query('status'));
         }
 
+        if (!$orders) {
+            throw ValidationException::withMessages([
+                'orders' => ['Order tidak ditemukan']
+            ]);
+        }
         return new OrderCollection($orders->get());
     }
 
@@ -95,6 +100,11 @@ class OrderController extends Controller
             $orders = $orders->where('status', $request->query('status'));
         }
 
+        if (!$orders) {
+            throw ValidationException::withMessages([
+                'orders' => ['Order tidak ditemukan']
+            ]);
+        }
         return new OrderCollection($orders->get());
     }
 

@@ -28,7 +28,7 @@ class RegisterController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'phone' => $validated['phone'],
-            'role_id' => 2,
+            'role_id' => 1,
             'userable_id' => $resident->id,
             'userable_type' => 'App\Models\Resident'
         ]);

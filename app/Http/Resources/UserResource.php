@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             'phone' => $this->phone,
             'name' => $this->name,
             'role' => $this->role_id,
+            'has_merchant' => $this->userable->merchant? true:false
         ];
     }
 }

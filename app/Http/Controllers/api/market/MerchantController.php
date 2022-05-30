@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MerchantStoreRequest;
 use App\Http\Resources\MerchantCollection;
 use App\Models\Merchant;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class MerchantController extends Controller
@@ -39,9 +39,20 @@ class MerchantController extends Controller
         return new MerchantCollection($merchants);
     }
 
-    public function show()
+    public function showByMerchant(Request $request)
     {
+        $user = $request->user();
+        $resident = $user->userable;
+        $merchant = $resident->merchant;
 
+        return SendResponse::handle($merchant, 'Permintaan berhasil');
+    }
+
+    public function show($merchantId)
+    {
+        $merchant = Merchant::findOrFail($merchantId);
+
+        return SendResponse::handle($merchant, 'Permintaan berhasil');
     }
 
     public function update(MerchantStoreRequest $request)

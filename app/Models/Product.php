@@ -17,6 +17,8 @@ class Product extends Model
         'merchant_id',
     ];
 
+    protected $with = ['image'];
+
     public function merchant()
     {
         return $this->belongsTo(Merchant::class);

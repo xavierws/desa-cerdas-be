@@ -28,7 +28,7 @@ class MerchantStoreRequest extends FormRequest
             'address' => 'string|required',
             'city' => 'string|required',
             'province' => 'string|required',
-            'postal_code' => 'number|required',
+            'postal_code' => 'numeric|required',
         ];
     }
 }

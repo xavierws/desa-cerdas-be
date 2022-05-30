@@ -62,6 +62,22 @@ Route::middleware('auth:sanctum')->group(function () {
     //Order Management
     Route::prefix('/order')->group(function () {
         Route::post('/checkout', [OrderController::class, 'store']);
+
+        //used by merchant
+        Route::post('/accept', [OrderController::class, 'acceptOrder']);
+        Route::post('/reject', [OrderController::class, 'rejectOrder']);
+
+        //used by buyer
+        Route::post('/finish', [OrderController::class, 'finishOrder']);
+
+        //show order
+        Route::get('/{orderId}', [OrderController::class, 'show']);
+
+        //list order for merchant
+        Route::get('/merchant/{merchantId}', [OrderController::class, 'indexByMerchant']);
+
+        //list Order for resident
+        Route::get('/resident/{residentId}', [OrderController::class, 'indexByResident']);
     });
 });
 

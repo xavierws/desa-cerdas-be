@@ -22,4 +22,14 @@ class Order extends Model
     {
         return $this->hasMany(Cart::class);
     }
+
+    public function merchant()
+    {
+        return $this->belongsTo(Merchant::class);
+    }
+
+    public function resident()
+    {
+        return $this->belongsTo(Resident::class);
+    }
 }

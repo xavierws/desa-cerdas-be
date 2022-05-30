@@ -27,4 +27,9 @@ class Resident extends Model
     {
         return $this->hasOne(Merchant::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

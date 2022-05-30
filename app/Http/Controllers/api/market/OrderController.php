@@ -6,8 +6,10 @@ use App\Actions\helpers\OrderHelper;
 use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderStoreRequest;
+use App\Http\Resources\OrderCollection;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -35,13 +37,54 @@ class OrderController extends Controller
         return SendResponse::handle($order, 'Order berhasil dibuat');
     }
 
-    public function approveOrder()
+    public function acceptOrder(Request $request)
     {
+        $order = Order::findOrFail($request->query('order_id'));
 
+        $order->status = OrderHelper::Status['ACCEPTED'];
+        $order->save();
+
+        return SendResponse::handle($order, 'Order diterima');
     }
 
-    public function refuseOrder()
+    public function rejectOrder(Request $request)
     {
+        $order = Order::findOrFail($request->query('order_id'));
 
+        $order->status = OrderHelper::Status['FAILED'];
+        $order->save();
+
+        return SendResponse::handle($order, 'Order ditolak');
+    }
+
+    public function finishOrder(Request $request)
+    {
+        $order = Order::findOrFail($request->query('order_id'));
+
+        $order->status = OrderHelper::Status['DELIVERED'];
+        $order->save();
+
+        return SendResponse::handle($order, 'Order selesai');
+    }
+
+    public function indexByMerchant($merchantId)
+    {
+        $orders = Order::where('merchant_id', $merchantId)->get();
+
+        return new OrderCollection($orders);
+    }
+
+    public function indexByResident($residentId)
+    {
+        $orders = Order::where('resident_id', $residentId)->get();
+
+        return new OrderCollection($orders);
+    }
+
+    public function show($orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        return SendResponse::handle($order, 'Permintaan Berhasil');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\market;
 
+use App\Actions\CountPrice;
 use App\Actions\helpers\OrderHelper;
 use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
@@ -20,8 +21,9 @@ class OrderController extends Controller
         $user = $request->user();
         $resident = $user->userable;
 
+        $price = CountPrice::handle($validated['items']);
         $order = Order::create([
-            'price' => $validated['price'],
+            'price' => $price,
             'status' => OrderHelper::Status['WAITING_APPROVAL'],
             'resident_id' => $resident->id,
             'merchant_id' => $validated['merchant_id'],

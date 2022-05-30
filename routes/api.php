@@ -55,6 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //Product Management
     Route::prefix('/product')->group(function () {
         Route::post('/store', [ProductController::class, 'store']);
+        Route::get('/list/{merchantId}', [ProductController::class, 'index']);
     });
 });
 

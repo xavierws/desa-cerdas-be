@@ -5,7 +5,9 @@ namespace App\Http\Controllers\api\market;
 use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
+use App\Http\Resources\ProductCollection;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -26,9 +28,11 @@ class ProductController extends Controller
         return SendResponse::handle($product, 'Produk berhasil dibuat');
     }
 
-    public function index()
+    public function index(Request $request, $merchantId)
     {
+        $products = Product::where('merchant_id', $merchantId)->get();
 
+        return new ProductCollection($products);
     }
 
     public function show()

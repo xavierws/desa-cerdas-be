@@ -34,7 +34,7 @@ class MerchantController extends Controller
     public function index()
     {
         //TO DO: merchant that is not approved yet should not be returned
-        $merchants = Merchant::paginate();
+        $merchants = Merchant::all();
 
         return new MerchantCollection($merchants);
     }

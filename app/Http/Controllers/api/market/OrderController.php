@@ -80,7 +80,7 @@ class OrderController extends Controller
             ]);
         }
 
-        $orders = Order::where('merchant_id', $merchant->id);
+        $orders = Order::with(['resident', 'merchant'])->where('merchant_id', $merchant->id);
         if ($request->has('status')) {
             $orders = $orders->where('status', $request->query('status'));
         }
@@ -97,7 +97,7 @@ class OrderController extends Controller
     {
         $user = $request->user();
         $resident = $user->userable;
-        $orders = Order::where('resident_id', $resident->id);
+        $orders = Order::with(['resident', 'merchant'])->where('resident_id', $resident->id);
         if ($request->has('status')) {
             $orders = $orders->where('status', $request->query('status'));
         }

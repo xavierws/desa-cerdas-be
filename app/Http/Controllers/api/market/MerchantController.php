@@ -20,6 +20,7 @@ class MerchantController extends Controller
 
         $merchant = Merchant::create([
             'name' => $validated['name'],
+            'phone' => $validated['phone'],
             'address' => $validated['address'],
             'city' => $validated['city'],
             'province' => $validated['province'],
@@ -63,6 +64,7 @@ class MerchantController extends Controller
         $validated = $request->validated();
 
         $merchant->name = $validated['name'];
+        $merchant->phone = $validated['phone'];
         $merchant->address = $validated['address'];
         $merchant->city = $validated['city'];
         $merchant->province = $validated['province'];

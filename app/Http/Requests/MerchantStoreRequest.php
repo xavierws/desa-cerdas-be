@@ -25,6 +25,7 @@ class MerchantStoreRequest extends FormRequest
     {
         return [
             'name' => 'string|required',
+            'phone' => ['numeric', 'required', 'regex:/^(([0][8])|([6][2][8])|([+][6][2][8]))[0-9]{8,12}$/'],
             'address' => 'string|required',
             'city' => 'string|required',
             'province' => 'string|required',

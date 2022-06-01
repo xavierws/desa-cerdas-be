@@ -17,8 +17,14 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('price');
             $table->string('status');
-            $table->foreignId('resident_id');
-            $table->foreignId('merchant_id');
+            $table->foreignId('resident_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignId('merchant_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -106,6 +106,11 @@ class WisataController extends Controller
         }
         return SendResponse::handle($data, "success");
     }
+    public function wisataListEdit($id)
+    {
+        $wisata = WisataList::find($id);
+        return SendResponse::handle($wisata, "success");
+    }
     public function wisataListUpdate(Request $request)
     {
         $wisataList = WisataList::find($request->id);

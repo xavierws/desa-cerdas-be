@@ -79,6 +79,11 @@ class InfrastrukturController extends Controller
         }
         return SendResponse::handle($data, "success");
     }
+    public function infrastrukturListEdit($id)
+    {
+        $infrastruktur = InfrastrukturList::find($id);
+        return SendResponse::handle($infrastruktur, "success");
+    }
     public function infrastrukturListUpdate(Request $request)
     {
         $InfrastrukturList = InfrastrukturList::find($request->id);

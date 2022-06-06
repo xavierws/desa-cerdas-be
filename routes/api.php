@@ -110,7 +110,7 @@ Route::put('/infrastruktur/category/update', [InfrastrukturController::class, 'i
 Route::delete('/infrastruktur/category/delete', [InfrastrukturController::class, 'infrastrukturDelete']);
 
 Route::post('/infrastruktur/list', [InfrastrukturController::class, 'infrastrukturList']);
-Route::post('/infrastruktur/list/{id}', [InfrastrukturController::class, 'infrastrukturListEdit']);
+//Route::post('/infrastruktur/list/{id}', [InfrastrukturController::class, 'infrastrukturListEdit']);
 Route::post('/infrastruktur/list/store', [InfrastrukturController::class, 'infrastrukturListStore']);
 Route::put('/infrastruktur/list/update', [InfrastrukturController::class, 'infrastrukturListUpdate']);
 Route::delete('/infrastruktur/list/delete', [InfrastrukturController::class, 'infrastrukturListDelete']);

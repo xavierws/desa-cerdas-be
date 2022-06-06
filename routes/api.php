@@ -113,7 +113,7 @@ Route::post('/infrastruktur/list', [InfrastrukturController::class, 'infrastrukt
 Route::post('/infrastruktur/list/store', [InfrastrukturController::class, 'infrastrukturListStore']);
 Route::put('/infrastruktur/list/update', [InfrastrukturController::class, 'infrastrukturListUpdate']);
 Route::delete('/infrastruktur/list/delete', [InfrastrukturController::class, 'infrastrukturListDelete']);
-Route::post('/infrastruktur/list/{id}', [InfrastrukturController::class, 'infrastrukturListEdit']);
+Route::get('/infrastruktur/list/{id}', [InfrastrukturController::class, 'infrastrukturListEdit']);
 
 Route::get('/infrastruktur/images/{id}', [InfrastrukturController::class, 'infrastrukturImagesList']);
 Route::post('/infrastruktur/images/store', [InfrastrukturController::class, 'infrastrukturImagesStore']);

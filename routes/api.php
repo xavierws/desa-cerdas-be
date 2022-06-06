@@ -99,10 +99,10 @@ Route::post('/wisata/list/store', [WisataController::class, 'wisataListStore']);
 Route::put('/wisata/list/update', [WisataController::class, 'wisataListUpdate']);
 Route::delete('/wisata/list/delete', [WisataController::class, 'wisataListDelete']);
 
-Route::get('/wisata/images/{id}', [WisataController::class, 'wisataImagesList']);
 Route::post('/wisata/images/store', [WisataController::class, 'wisataImagesStore']);
 Route::put('/wisata/images/update', [WisataController::class, 'wisataImagesUpdate']);
 Route::delete('/wisata/images/delete', [WisataController::class, 'wisataImagesDelete']);
+Route::get('/wisata/images/{id}', [WisataController::class, 'wisataImagesList']);
 
 Route::get('/infrastruktur/category', [InfrastrukturController::class, 'infrastrukturCategory']);
 Route::post('/infrastruktur/category/store', [InfrastrukturController::class, 'infrastrukturStore']);
@@ -110,10 +110,10 @@ Route::put('/infrastruktur/category/update', [InfrastrukturController::class, 'i
 Route::delete('/infrastruktur/category/delete', [InfrastrukturController::class, 'infrastrukturDelete']);
 
 Route::post('/infrastruktur/list', [InfrastrukturController::class, 'infrastrukturList']);
-//Route::post('/infrastruktur/list/{id}', [InfrastrukturController::class, 'infrastrukturListEdit']);
 Route::post('/infrastruktur/list/store', [InfrastrukturController::class, 'infrastrukturListStore']);
 Route::put('/infrastruktur/list/update', [InfrastrukturController::class, 'infrastrukturListUpdate']);
 Route::delete('/infrastruktur/list/delete', [InfrastrukturController::class, 'infrastrukturListDelete']);
+Route::post('/infrastruktur/list/{id}', [InfrastrukturController::class, 'infrastrukturListEdit']);
 
 Route::get('/infrastruktur/images/{id}', [InfrastrukturController::class, 'infrastrukturImagesList']);
 Route::post('/infrastruktur/images/store', [InfrastrukturController::class, 'infrastrukturImagesStore']);

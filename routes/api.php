@@ -52,7 +52,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{merchantId}', [MerchantController::class, 'show']);
 
         //only used by admin
-        Route::put('/approve', [MerchantController::class, 'approve']);
+        Route::put('/approve/{merchantId}', [MerchantController::class, 'approve']);
     });
 
     //Product Management

@@ -87,7 +87,7 @@ class MerchantController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws ValidationException
      */
-    public function approve(Request $request, $merchantId)
+    public function approve(Request $request)
     {
         $user = $request->user();
         if ($user->role !== 'admin') {
@@ -96,7 +96,7 @@ class MerchantController extends Controller
             ]);
         }
 
-        $merchant = Merchant::findOrFail($merchantId);
+        $merchant = Merchant::findOrFail($request->id);
         $merchant->is_approved = true;
         $merchant->save();
 

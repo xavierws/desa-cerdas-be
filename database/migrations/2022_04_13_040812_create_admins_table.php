@@ -17,7 +17,6 @@ class CreateAdminsTable extends Migration
             $table->id();
             $table->string('name', 191);
             $table->string('nik')->unique();
-            $table->string('phone', 191);
             $table->string('occupation', 191);
             $table->timestamps();
         });

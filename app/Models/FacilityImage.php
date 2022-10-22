@@ -11,6 +11,8 @@ class FacilityImage extends Model
 
     protected $fillable = [
         'url',
+        'imageable_id',
+        'imageable_type',
     ];
 
     public function imageable()

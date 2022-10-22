@@ -10,7 +10,7 @@ class FacilityImage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image_url',
+        'url',
     ];
 
     public function imageable()

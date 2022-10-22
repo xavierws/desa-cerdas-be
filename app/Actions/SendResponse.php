@@ -8,6 +8,7 @@ class SendResponse
     {
         return response()->json([
             'status' => 200,
+            'success' => true,
             'message' => $message,
             'data' => $data,
         ]);
@@ -17,6 +18,7 @@ class SendResponse
     {
         return response()->json([
             'status' => 500,
+            'success' => false,
             'message' => $message,
             'data' => '',
         ]);

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api\infrastructure;
 
 use App\Actions\SendResponse;
 use App\Actions\StoreImage;
+use App\Http\Controllers\Controller;
 use App\Models\InfrastrukturCategory;
 use App\Models\InfrastrukturImages;
 use App\Models\InfrastrukturList;
@@ -11,11 +12,8 @@ use Exception;
 use Illuminate\Http\Request;
 
 
-
 class InfrastrukturController extends Controller
 {
-
-
     public function infrastrukturStore(Request $request)
     {
         $category = InfrastrukturCategory::create([

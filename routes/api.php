@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\api\auth\RegisterController;
 use App\Http\Controllers\api\auth\LoginController;
-use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\api\auth\RegisterController;
+use App\Http\Controllers\api\infrastructure\InfrastrukturController;
 use App\Http\Controllers\api\market\MerchantController;
-use App\Http\Controllers\InfrastrukturController;
-use App\Http\Controllers\WisataController;
-use App\Http\Controllers\api\ResidentController;
-use App\Http\Controllers\api\market\ProductController;
 use App\Http\Controllers\api\market\OrderController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\api\market\ProductController;
+use App\Http\Controllers\api\ResidentController;
+use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\WisataController;
+use App\Http\Controllers\api\facility\FasumController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,6 +82,16 @@ Route::middleware('auth:sanctum')->group(function () {
         //list Order for resident
         //filter using status key
         Route::get('/resident', [OrderController::class, 'indexByResident']);
+    });
+
+    Route::prefix('/facility')->group(function () {
+        Route::prefix('/category')->group(function () {
+            Route::post('/store', [FasumController::class, 'storeCategory']);
+            Route::post('/image/store', [FasumController::class, 'storeCategoryImage']);
+            Route::get('/', [FasumController::class, 'indexCategory']);
+            Route::put('/update', [FasumController::class, 'updateCategory']);
+            Route::delete('/delete', [FasumController::class, 'destroyCategory']);
+        });
     });
 });
 

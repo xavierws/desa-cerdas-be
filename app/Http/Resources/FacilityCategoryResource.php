@@ -16,7 +16,7 @@ class FacilityCategoryResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'image_url' => $this->image->url,
+            'image_url' => $this->image? $this->image->url : '',
         ];
     }
 }

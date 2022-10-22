@@ -88,5 +88,9 @@ class FasumController extends Controller
         return SendResponse::handle($category, 'category berhasil dihapus');
     }
 
+    public function store()
+    {
+        
+    }
 
 }

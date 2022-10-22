@@ -36,7 +36,7 @@ class FasumController extends Controller
             'imageable_type' => FacilityCategory::class
         ]);
 
-        return SendResponse::handle($facilityImage, 'Gambar berhasil disimpan')
+        return SendResponse::handle($facilityImage, 'Gambar berhasil disimpan');
     }
 
     public function indexCategory()
@@ -69,7 +69,7 @@ class FasumController extends Controller
         $category->name = $request->input('name');
         $category->save();
 
-        return SendResponse::handle($category, 'category berhasil diubah')
+        return SendResponse::handle($category, 'category berhasil diubah');
     }
 
     public function destroyCategory(Request $request)
@@ -85,7 +85,7 @@ class FasumController extends Controller
         $category->image->delete();
         $category->delete();
 
-        return SendResponse::handle($category, 'category berhasil dihapus')
+        return SendResponse::handle($category, 'category berhasil dihapus');
     }
 
 

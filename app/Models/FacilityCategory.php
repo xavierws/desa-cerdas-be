@@ -19,4 +19,9 @@ class FacilityCategory extends Model
     {
         return $this->morphOne(FacilityImage::class, 'imageable');
     }
+
+    public function facility()
+    {
+        return $this->hasMany(Facility::class);
+    }
 }

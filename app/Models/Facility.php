@@ -23,4 +23,9 @@ class Facility extends Model
     {
         return $this->morphOne(FacilityImage::class, 'imageable');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(FacilityCategory::class);
+    }
 }

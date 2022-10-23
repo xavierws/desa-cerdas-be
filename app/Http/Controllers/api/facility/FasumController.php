@@ -6,6 +6,8 @@ use App\Actions\SendResponse;
 use App\Actions\StoreImage;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FacilityCategoryCollection;
+use App\Http\Resources\FacilityCollection;
+use App\Http\Resources\FacilityResource;
 use App\Models\Facility;
 use App\Models\FacilityCategory;
 use App\Models\FacilityImage;
@@ -116,10 +118,19 @@ class FasumController extends Controller
 
     public function index()
     {
+        $facilities = Facility::all();
 
+        return new FacilityCollection($facilities);
     }
 
-    public function show()
+    public function show(Request $request)
+    {
+        $facility = Facility::findOrFail($request->input('facility_id'));
+
+        return SendResponse::handle(new FacilityResource($facility), 'data berhasil diambil');
+    }
+
+    public function update(Request $request)
     {
 
     }

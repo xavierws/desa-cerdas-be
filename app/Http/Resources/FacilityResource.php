@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FacilityCategoryResource extends JsonResource
+class FacilityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,12 @@ class FacilityCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image_url' => $this->image? $this->image->url : '',
+            'description' => $this->description,
+            'map_url' => $this->map_url,
+            'information' => $this->information,
+            'category_id' => $this->category_id,
+            'category' => $this->category->name,
+            'image_url' => $this->image->url,
         ];
     }
 }

@@ -92,6 +92,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::put('/update', [FasumController::class, 'updateCategory']);
             Route::delete('/delete', [FasumController::class, 'destroyCategory']);
         });
+
+        Route::post('/store', [FasumController::class, 'store']);
     });
 });
 

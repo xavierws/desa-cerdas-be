@@ -6,6 +6,7 @@ use App\Actions\SendResponse;
 use App\Actions\StoreImage;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FacilityCategoryCollection;
+use App\Models\Facility;
 use App\Models\FacilityCategory;
 use App\Models\FacilityImage;
 use Illuminate\Http\Request;
@@ -88,9 +89,39 @@ class FasumController extends Controller
         return SendResponse::handle($category, 'category berhasil dihapus');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        
+        $facility = Facility::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'map_url' => $request->input('map_url'),
+            'information' => $request->input('information'),
+            'category_id' => $request->input('facility_category_id'),
+        ]);
+
+        $imageUrl = StoreImage::handle(
+            $request->input('base64_image'),
+            'facility/list',
+            $facility->id
+        );
+
+        $image = FacilityImage::create([
+            'url' => $imageUrl,
+            'imageable_id' => $facility->id,
+            'imageable_type' => Facility::class,
+        ]);
+
+        return SendResponse::handle($facility, 'fasum berhasil dibuat');
+    }
+
+    public function index()
+    {
+
+    }
+
+    public function show()
+    {
+
     }
 
 }

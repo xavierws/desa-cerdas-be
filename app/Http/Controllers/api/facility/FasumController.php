@@ -155,4 +155,20 @@ class FasumController extends Controller
         return SendResponse::handle($facility, 'fasum berhasil diubah');
     }
 
+    public function destroy(Request $request)
+    {
+        $facility = Facility::findOrFail($request->input('facility_id'));
+        if (!$facility) {
+            throw ValidationException::withMessages([
+                'facility' => ['Facility tidak ditemukan']
+            ]);
+        }
+
+        StoreImage::delete($facility->image->url);
+        $facility->image->delete();
+        $facility->delete();
+
+        return SendResponse::handle($facility, 'fasum berhasil dihapus');
+    }
+
 }

@@ -98,6 +98,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/', [FasumController::class, 'index']);
         Route::get('/{facilityId}', [FasumController::class, 'show']);
         Route::put('/update', [FasumController::class, 'update']);
+        Route::delete('/delete', [FasumController::class, 'destroy']);
     });
 });
 

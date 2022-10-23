@@ -51,7 +51,7 @@ class FasumController extends Controller
 
     public function updateCategory(Request $request)
     {
-        $category = FacilityCategory::find($request->input('facility_category_id'));
+        $category = FacilityCategory::findOrFail($request->input('facility_category_id'));
         if (!$category) {
             throw ValidationException::withMessages([
                 'category' => ['Facility Category tidak ditemukan']
@@ -62,7 +62,7 @@ class FasumController extends Controller
             StoreImage::delete($category->image->url);
             $url = StoreImage::handle(
                 $request->input('base64_image'),
-                'facility/category',
+                'facility/category/',
                 $request->input('facility_category_id')
             );
             $category->image->url = $url;
@@ -77,7 +77,7 @@ class FasumController extends Controller
 
     public function destroyCategory(Request $request)
     {
-        $category = FacilityCategory::find($request->input('facility_category_id'));
+        $category = FacilityCategory::findOrFail($request->input('facility_category_id'));
         if (!$category) {
             throw ValidationException::withMessages([
                 'category' => ['Facility Category tidak ditemukan']
@@ -103,7 +103,7 @@ class FasumController extends Controller
 
         $imageUrl = StoreImage::handle(
             $request->input('base64_image'),
-            'facility/list',
+            'facility/list/',
             $facility->id
         );
 
@@ -132,7 +132,27 @@ class FasumController extends Controller
 
     public function update(Request $request)
     {
+        $facility = Facility::findOrFail($request->input('facility_id'));
 
+        if ($request->has('base64_image')) {
+            StoreImage::delete($facility->image->url);
+            $url = StoreImage::handle(
+                $request->input('base64_image'),
+                'facility/list/',
+                $request->input('facility_id')
+            );
+            $facility->image->url = $url;
+            $facility->image->save();
+        }
+
+        $facility->name = $request->input('name');
+        $facility->description = $request->input('description');
+        $facility->map_url = $request->input('map_url');
+        $facility->information = $request->input('information');
+        $facility->category_id = $request->input('facility_category_id');
+        $facility->save();
+
+        return SendResponse::handle($facility, 'fasum berhasil diubah');
     }
 
 }

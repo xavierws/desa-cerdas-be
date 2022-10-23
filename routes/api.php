@@ -84,6 +84,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/resident', [OrderController::class, 'indexByResident']);
     });
 
+    //facility management
     Route::prefix('/facility')->group(function () {
         Route::prefix('/category')->group(function () {
             Route::post('/store', [FasumController::class, 'storeCategory']);
@@ -96,6 +97,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/store', [FasumController::class, 'store']);
         Route::get('/', [FasumController::class, 'index']);
         Route::get('/{facilityId}', [FasumController::class, 'show']);
+        Route::put('/update', [FasumController::class, 'update']);
     });
 });
 

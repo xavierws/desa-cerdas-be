@@ -123,9 +123,9 @@ class FasumController extends Controller
         return new FacilityCollection($facilities);
     }
 
-    public function show(Request $request)
+    public function show($facilityId)
     {
-        $facility = Facility::findOrFail($request->input('facility_id'));
+        $facility = Facility::findOrFail($facilityId);
 
         return SendResponse::handle(new FacilityResource($facility), 'data berhasil diambil');
     }

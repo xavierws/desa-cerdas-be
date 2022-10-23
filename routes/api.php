@@ -94,6 +94,8 @@ Route::middleware('auth:sanctum')->group(function () {
         });
 
         Route::post('/store', [FasumController::class, 'store']);
+        Route::get('/', [FasumController::class, 'index']);
+        Route::get('/{facilityId}', [FasumController::class, 'show']);
     });
 });
 

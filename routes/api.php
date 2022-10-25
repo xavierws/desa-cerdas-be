@@ -8,6 +8,7 @@ use App\Http\Controllers\api\market\OrderController;
 use App\Http\Controllers\api\market\ProductController;
 use App\Http\Controllers\api\ResidentController;
 use App\Http\Controllers\api\UserController;
+use \App\Http\Controllers\api\information\BasicInformationController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\api\facility\FasumController;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{facilityId}', [FasumController::class, 'show']);
         Route::put('/update', [FasumController::class, 'update']);
         Route::delete('/delete', [FasumController::class, 'destroy']);
+    });
+
+    Route::prefix('/information')->group(function () {
+        Route::prefix('/village')->group(function () {
+            Route::post('/store', [BasicInformationController::class, 'store']);
+            Route::get('/{id}', [BasicInformationController::class, 'show']);
+            Route::put('/update', [BasicInformationController::class, 'update']);
+        });
     });
 });
 

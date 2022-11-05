@@ -14,7 +14,7 @@ use App\Models\FacilityImage;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class FasumController extends Controller
+class FacilityController extends Controller
 {
     public function storeCategory(Request $request)
     {

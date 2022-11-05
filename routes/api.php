@@ -10,7 +10,7 @@ use App\Http\Controllers\api\ResidentController;
 use App\Http\Controllers\api\UserController;
 use \App\Http\Controllers\api\information\BasicInformationController;
 use App\Http\Controllers\WisataController;
-use App\Http\Controllers\api\facility\FasumController;
+use App\Http\Controllers\api\facility\FacilityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,18 +88,18 @@ Route::middleware('auth:sanctum')->group(function () {
     //facility management
     Route::prefix('/facility')->group(function () {
         Route::prefix('/category')->group(function () {
-            Route::post('/store', [FasumController::class, 'storeCategory']);
-            Route::post('/image/store', [FasumController::class, 'storeCategoryImage']);
-            Route::get('/', [FasumController::class, 'indexCategory']);
-            Route::put('/update', [FasumController::class, 'updateCategory']);
-            Route::delete('/delete', [FasumController::class, 'destroyCategory']);
+            Route::post('/store', [FacilityController::class, 'storeCategory']);
+            Route::post('/image/store', [FacilityController::class, 'storeCategoryImage']);
+            Route::get('/', [FacilityController::class, 'indexCategory']);
+            Route::put('/update', [FacilityController::class, 'updateCategory']);
+            Route::delete('/delete', [FacilityController::class, 'destroyCategory']);
         });
 
-        Route::post('/store', [FasumController::class, 'store']);
-        Route::get('/', [FasumController::class, 'index']);
-        Route::get('/{facilityId}', [FasumController::class, 'show']);
-        Route::put('/update', [FasumController::class, 'update']);
-        Route::delete('/delete', [FasumController::class, 'destroy']);
+        Route::post('/store', [FacilityController::class, 'store']);
+        Route::get('/', [FacilityController::class, 'index']);
+        Route::get('/{facilityId}', [FacilityController::class, 'show']);
+        Route::put('/update', [FacilityController::class, 'update']);
+        Route::delete('/delete', [FacilityController::class, 'destroy']);
     });
 
     Route::prefix('/information')->group(function () {

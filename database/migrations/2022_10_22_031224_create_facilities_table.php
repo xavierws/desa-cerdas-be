@@ -20,7 +20,7 @@ class CreateFacilitiesTable extends Migration
             $table->string('map_url');
             $table->string('information');
             $table->foreignId('category_id')
-                ->constrained('facility_category')
+                ->constrained('facility_categories')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->timestamps();

@@ -116,9 +116,9 @@ class FacilityController extends Controller
         return SendResponse::handle($facility, 'fasum berhasil dibuat');
     }
 
-    public function index()
+    public function index($categoryId)
     {
-        $facilities = Facility::all();
+        $facilities = Facility::where('category_id', $categoryId)->get();
 
         return new FacilityCollection($facilities);
     }

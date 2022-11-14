@@ -96,7 +96,7 @@ Route::middleware('auth:sanctum')->group(function () {
         });
 
         Route::post('/store', [FacilityController::class, 'store']);
-        Route::get('/', [FacilityController::class, 'index']);
+        Route::get('/list/{categoryId}', [FacilityController::class, 'index']);
         Route::get('/{facilityId}', [FacilityController::class, 'show']);
         Route::put('/update', [FacilityController::class, 'update']);
         Route::delete('/delete', [FacilityController::class, 'destroy']);

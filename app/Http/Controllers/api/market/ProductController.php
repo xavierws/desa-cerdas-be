@@ -49,8 +49,20 @@ class ProductController extends Controller
 
     }
 
-    public function update()
+    public function update(ProductStoreRequest $request, $productId)
     {
+        $user = $request->user();
+        $merchant = $user->userable->merchant;
+        $validated = $request->validated();
 
+        $product = Product::findOrFail($productId);
+
+        $product->name = $validated['name'];
+        $product->price = $validated['price'];
+        $product->stock = $validated['stock'];
+        $product->description = $validated['description'];
+        $product->save();
+
+        return SendResponse::handle($product, 'produk berhasil diubah');
     }
 }

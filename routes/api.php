@@ -60,6 +60,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/product')->group(function () {
         Route::post('/store', [ProductController::class, 'store']);
         Route::get('/list/{merchantId}', [ProductController::class, 'index']);
+        Route::put('/update/{productId}', [ProductController::class, 'update']);
     });
 
     //Order Management

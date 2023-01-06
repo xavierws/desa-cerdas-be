@@ -83,7 +83,6 @@ class MerchantController extends Controller
      * used by admin to approve merchant
      *
      * @param Request $request
-     * @param $merchantId
      * @return \Illuminate\Http\JsonResponse
      * @throws ValidationException
      */

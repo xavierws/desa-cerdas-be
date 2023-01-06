@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
             'email' => 'admin@mail.com',
             'password' => Hash::make('Super@dmin_1'),
             'phone' => '081234567890',
-            'role_id' => 3,
+            'role_id' => 2,
             'userable_id' => $admin->id,
             'userable_type' => 'App\Models\Admin',
         ]);

@@ -89,7 +89,7 @@ class MerchantController extends Controller
     public function approve(Request $request)
     {
         $user = $request->user();
-        if ($user->role_name !== 'admin') {
+        if ($user->role_name !== 'super_admin') {
             throw ValidationException::withMessages([
                 'role' => ['role harus admin'],
             ]);

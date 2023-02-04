@@ -15,8 +15,8 @@ class CreateVillageInformationTable extends Migration
     {
         Schema::create('village_information', function (Blueprint $table) {
             $table->id();
-            $table->string('vision');
-            $table->string('mission');
+            $table->text('vision');
+            $table->text('mission');
             $table->string('image');
             $table->string('url');
             $table->timestamps();

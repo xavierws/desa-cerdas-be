@@ -8,9 +8,10 @@ use App\Http\Controllers\api\market\OrderController;
 use App\Http\Controllers\api\market\ProductController;
 use App\Http\Controllers\api\ResidentController;
 use App\Http\Controllers\api\UserController;
-use \App\Http\Controllers\api\information\BasicInformationController;
+use \App\Http\Controllers\api\profile\InformationController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\api\facility\FacilityController;
+use App\Http\Controllers\api\profile\OrganizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -105,9 +106,16 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('/information')->group(function () {
         Route::prefix('/village')->group(function () {
-            Route::post('/store', [BasicInformationController::class, 'store']);
-            Route::get('/{id}', [BasicInformationController::class, 'show']);
-            Route::put('/update', [BasicInformationController::class, 'update']);
+            Route::post('/store', [InformationController::class, 'store']);
+            Route::get('/{id}', [InformationController::class, 'show']);
+            Route::put('/update', [InformationController::class, 'update']);
+        });
+        Route::prefix('/organization')->group(function () {
+            Route::post('/store', [OrganizationController::class, 'store']);
+            Route::post('/store-officials', [OrganizationController::class, 'storeOfficial']);
+            Route::get('/index', [OrganizationController::class, 'index']);
+            Route::get('/{orgId}', [OrganizationController::class, 'show']);
+            Route::put('/update', [OrganizationController::class, 'update']);
         });
     });
 });

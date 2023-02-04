@@ -5,11 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrganizationName extends Model
+class OrganizationOfficial extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'occupation',
         'name',
+        'organization_id',
     ];
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
 }

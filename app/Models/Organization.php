@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Organization extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+    ];
+
+//    protected $with = ['officials'];
+
+    public function Officials()
+    {
+        return $this->hasMany(OrganizationOfficial::class);
+    }
 }

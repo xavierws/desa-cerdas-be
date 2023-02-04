@@ -62,4 +62,9 @@ class UserController extends Controller
 
         return SendResponse::handle($data, 'User berhasil dihapus');
     }
+
+    public function resetPassword()
+    {
+
+    }
 }

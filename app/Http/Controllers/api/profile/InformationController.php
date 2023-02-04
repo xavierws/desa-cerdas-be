@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api\information;
+namespace App\Http\Controllers\api\profile;
 
 use App\Actions\SendResponse;
 use App\Actions\StoreImage;
@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\VillageInformation;
 use Illuminate\Http\Request;
 
-class BasicInformationController extends Controller
+class InformationController extends Controller
 {
     public function store(Request $request)
     {

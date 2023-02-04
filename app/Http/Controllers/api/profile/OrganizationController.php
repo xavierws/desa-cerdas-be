@@ -15,6 +15,7 @@ class OrganizationController extends Controller
     {
         $organization = Organization::create([
             'name' => $request->input('name'),
+            'type' => $request->input('type') === 'paten'? 1:2
         ]);
 
         return SendResponse::handle($organization, 'Organisasi berhasil dibuat');
@@ -38,8 +39,9 @@ class OrganizationController extends Controller
         return SendResponse::handle($orgOfficials, 'Anggota Organisasi berhasil dimasukkan');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $request->query();
         $organizations = Organization::all();
 
         return SendResponse::handle($organizations, 'data berhasil diambil');

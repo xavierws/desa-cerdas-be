@@ -12,4 +12,9 @@ class OrganizationType extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function organizations()
+    {
+        return $this->hasMany(Organization::class);
+    }
 }

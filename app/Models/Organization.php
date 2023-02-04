@@ -11,6 +11,7 @@ class Organization extends Model
 
     protected $fillable = [
         'name',
+        'type_id'
     ];
 
 //    protected $with = ['officials'];
@@ -18,5 +19,10 @@ class Organization extends Model
     public function Officials()
     {
         return $this->hasMany(OrganizationOfficial::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(OrganizationType::class);
     }
 }

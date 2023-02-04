@@ -17,7 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('type_id')
-                ->constrained()
+                ->constrained('organization_types')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->timestamps();

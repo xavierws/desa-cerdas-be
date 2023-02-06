@@ -28,6 +28,6 @@ class Organization extends Model
 
     public function getTypeAttribute()
     {
-        return $this->type->name;
+        return $this->type()->name;
     }
 }

@@ -18,7 +18,7 @@ class OrganizationResource extends JsonResource
             'id' => $this->name,
             'organization' => $this->name,
             'type' => $this->type_name,
-            'officials' => new OrganizationOfficialResource($this->officials),
+            'officials' => OrganizationOfficialResource::collection($this->officials),
         ];
     }
 }

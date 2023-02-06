@@ -14,7 +14,7 @@ class Organization extends Model
         'type_id'
     ];
 
-//    protected $with = ['officials'];
+    protected $with = ['image'];
 
     public function Officials()
     {
@@ -24,6 +24,11 @@ class Organization extends Model
     public function type()
     {
         return $this->belongsTo(OrganizationType::class);
+    }
+
+    public function image()
+    {
+        return $this->hasOne(OrganizationImage::class);
     }
 
     public function getTypeNameAttribute()

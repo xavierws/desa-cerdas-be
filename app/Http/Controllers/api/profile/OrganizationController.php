@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\api\profile;
 
 use App\Actions\SendResponse;
+use App\Actions\StoreImage;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrganizationResource;
+use App\Models\OrganizationImage;
 use App\Models\OrganizationOfficial;
 use App\Models\Organization;
 use Illuminate\Http\Request;
@@ -18,8 +20,18 @@ class OrganizationController extends Controller
             'type_id' => $request->input('type') === 'paten'? 1:2
         ]);
 
-        $officials = $request->input('officials');
+        // store image
+        $imgUrl = StoreImage::handle(
+            $request->input('base64_image'),
+            'organization/',
+            $organization->id
+        );
+        $image = OrganizationImage::create([
+            'url' => $imgUrl,
+            'organization_id' => $organization->id,
+        ]);
 
+        $officials = $request->input('officials');
         foreach ($officials as $official) {
             $orgOfficial = OrganizationOfficial::create([
                 'occupation' => $official['occupation'],
@@ -30,24 +42,6 @@ class OrganizationController extends Controller
 
         return SendResponse::handle(new OrganizationResource($organization), 'Organisasi berhasil dibuat');
     }
-
-//    public function storeOfficial(Request $request)
-//    {
-//        $officials = $request->input('officials');
-//        $orgOfficials = [];
-//
-//        foreach ($officials as $official) {
-//            $orgOfficial = OrganizationOfficial::create([
-//                'occupation' => $official['occupation'],
-//                'name' => $official['name'],
-//                'organization_id' => $request->input('org_id'),
-//            ]);
-//
-//            $orgOfficials[] = $orgOfficial;
-//        }
-//
-//        return SendResponse::handle($orgOfficials, 'Anggota Organisasi berhasil dimasukkan');
-//    }
 
     public function index(Request $request)
     {

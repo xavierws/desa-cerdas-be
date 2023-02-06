@@ -55,7 +55,7 @@ class OrganizationController extends Controller
         $orgPaten = Organization::where('type_id', 1)->get();
         $orgNonPaten = Organization::where('type_id', 2)->get();
 
-        return SendResponse::handle(json_encode([
+        return SendResponse::handle(([
             'paten' => $orgPaten,
             'non_paten' => $orgNonPaten,
         ]), 'data berhasil diambil');

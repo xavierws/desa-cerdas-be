@@ -15,7 +15,7 @@ class OrganizationController extends Controller
     {
         $organization = Organization::create([
             'name' => $request->input('name'),
-            'type' => $request->input('type') === 'paten'? 1:2
+            'type_id' => $request->input('type') === 'paten'? 1:2
         ]);
 
         return SendResponse::handle($organization, 'Organisasi berhasil dibuat');
@@ -41,10 +41,14 @@ class OrganizationController extends Controller
 
     public function index(Request $request)
     {
-        $request->query();
-        $organizations = Organization::all();
+//        $organizations = Organization::all();
+        $orgPaten = Organization::where('type_id', 1)->get();
+        $orgNonPaten = Organization::where('type_id', 2)->get();
 
-        return SendResponse::handle($organizations, 'data berhasil diambil');
+        return SendResponse::handle(json_encode([
+            'paten' => $orgPaten,
+            'non_paten' => $orgNonPaten,
+        ]), 'data berhasil diambil');
     }
 
     public function show($orgId)

@@ -25,4 +25,9 @@ class Organization extends Model
     {
         return $this->belongsTo(OrganizationType::class);
     }
+
+    public function getTypeAttribute()
+    {
+        return $this->type->name;
+    }
 }

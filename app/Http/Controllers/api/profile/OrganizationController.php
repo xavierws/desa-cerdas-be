@@ -19,7 +19,6 @@ class OrganizationController extends Controller
         ]);
 
         $officials = $request->input('officials');
-        $orgOfficials = [];
 
         foreach ($officials as $official) {
             $orgOfficial = OrganizationOfficial::create([
@@ -27,8 +26,6 @@ class OrganizationController extends Controller
                 'name' => $official['name'],
                 'organization_id' => $organization->id,
             ]);
-
-            $orgOfficials[] = $orgOfficial;
         }
 
         return SendResponse::handle(new OrganizationResource($organization), 'Organisasi berhasil dibuat');

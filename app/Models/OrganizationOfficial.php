@@ -19,4 +19,9 @@ class OrganizationOfficial extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+
+    public function getOrganizationAttribute()
+    {
+        return $this->organization->name;
+    }
 }

@@ -16,7 +16,7 @@ class InfrastrukturList extends Migration
         Schema::create('infrastruktur_list', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('thumbnail_url');
             $table->string('map_url');
             $table->string('information');

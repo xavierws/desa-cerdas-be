@@ -16,7 +16,7 @@ class CreateWisataTable extends Migration
         Schema::create('wisata', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('image_url');
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class OrganizationOfficialResource extends JsonResource
             'occupation' => $this->occupation,
             'name' => $this->name,
             'organization_id' => $this->organization_id,
-            'organization' => $this->organization,
+            'organization' => $this->organization_name,
         ];
     }
 }

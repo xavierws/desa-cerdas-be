@@ -18,11 +18,6 @@ class OrganizationController extends Controller
             'type_id' => $request->input('type') === 'paten'? 1:2
         ]);
 
-        return SendResponse::handle($organization, 'Organisasi berhasil dibuat');
-    }
-
-    public function storeOfficial(Request $request)
-    {
         $officials = $request->input('officials');
         $orgOfficials = [];
 
@@ -30,14 +25,32 @@ class OrganizationController extends Controller
             $orgOfficial = OrganizationOfficial::create([
                 'occupation' => $official['occupation'],
                 'name' => $official['name'],
-                'organization_id' => $request->input('org_id'),
+                'organization_id' => $organization->id,
             ]);
 
             $orgOfficials[] = $orgOfficial;
         }
 
-        return SendResponse::handle($orgOfficials, 'Anggota Organisasi berhasil dimasukkan');
+        return SendResponse::handle(new OrganizationResource($organization), 'Organisasi berhasil dibuat');
     }
+
+//    public function storeOfficial(Request $request)
+//    {
+//        $officials = $request->input('officials');
+//        $orgOfficials = [];
+//
+//        foreach ($officials as $official) {
+//            $orgOfficial = OrganizationOfficial::create([
+//                'occupation' => $official['occupation'],
+//                'name' => $official['name'],
+//                'organization_id' => $request->input('org_id'),
+//            ]);
+//
+//            $orgOfficials[] = $orgOfficial;
+//        }
+//
+//        return SendResponse::handle($orgOfficials, 'Anggota Organisasi berhasil dimasukkan');
+//    }
 
     public function index(Request $request)
     {

@@ -112,7 +112,7 @@ Route::middleware('auth:sanctum')->group(function () {
         });
         Route::prefix('/organization')->group(function () {
             Route::post('/store', [OrganizationController::class, 'store']);
-            Route::post('/store-officials', [OrganizationController::class, 'storeOfficial']);
+//            Route::post('/store-officials', [OrganizationController::class, 'storeOfficial']);
             Route::get('/index', [OrganizationController::class, 'index']);
             Route::get('/{orgId}', [OrganizationController::class, 'show']);
             Route::put('/update', [OrganizationController::class, 'update']);

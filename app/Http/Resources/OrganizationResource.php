@@ -15,7 +15,7 @@ class OrganizationResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->name,
+            'id' => $this->id,
             'organization' => $this->name,
             'type' => $this->type_name,
             'officials' => OrganizationOfficialResource::collection($this->officials),

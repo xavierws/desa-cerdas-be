@@ -88,9 +88,9 @@ class OrganizationController extends Controller
             $orgOfficials[] = $orgofficial;
         }
 
-        return SendResponse::handle(json_encode([
+        return SendResponse::handle([
             'name' => $org->name,
             'officials' => $orgOfficials,
-        ]), 'data organisasi berhasil diubah');
+        ], 'data organisasi berhasil diubah');
     }
 }

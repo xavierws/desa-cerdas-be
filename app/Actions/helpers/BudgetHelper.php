@@ -33,4 +33,13 @@ class BudgetHelper
     {
         return ($cost / $count) * 100;
     }
+
+    public static function countTotalCost($budgets)
+    {
+        $totalCost = 0;
+        foreach ($budgets as $budget) {
+            $totalCost += $budget['cost'];
+        }
+        return $totalCost;
+    }
 }

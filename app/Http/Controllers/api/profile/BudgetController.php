@@ -57,13 +57,12 @@ class BudgetController extends Controller
         ])->count();
 
         $i = 0;
-        $totalCost = 0;
+        $totalCost = BudgetHelper::countTotalCost($budgets);
         foreach ($budgets as $budget) {
-            $percentage = BudgetHelper::countPercentage($budget->cost, $count);
+            $percentage = BudgetHelper::countPercentage($budget->cost, $totalCost);
             $budgets[$i]['percentage'] = $percentage;
             $budgets[$i]['color'] = BudgetHelper::DiagramColor[$i];
 
-            $totalCost += $budget->cost;
             $i++;
         }
 

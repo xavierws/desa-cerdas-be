@@ -16,6 +16,15 @@ class BudgetHelper
         "#b33dc6",
     ];
 
+    public static function pickDiagramColor($i)
+    {
+        if ($i > count(self::DiagramColor)-1) {
+            return self::DiagramColor[$i-count(self::DiagramColor)];
+        }
+
+        return self::DiagramColor[$i];
+    }
+
     public static function idCategory($category)
     {
         if ($category === 'pendapatan') {

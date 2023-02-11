@@ -14,7 +14,7 @@ class BudgetSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('budget_types')->insert([
+        DB::table('budget_categories')->insert([
             ['id' => 1, 'name' => 'pendapatan'],
             ['id' => 2, 'name' => 'belanja'],
             ['id' => 3, 'name' => 'pembiayaan'],

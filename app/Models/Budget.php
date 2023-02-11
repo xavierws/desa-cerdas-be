@@ -16,4 +16,8 @@ class Budget extends Model
         'cost',
         'category_id',
     ];
+
+    protected $casts = [
+        'cost' => 'integer'
+    ];
 }

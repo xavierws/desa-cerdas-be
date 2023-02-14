@@ -72,7 +72,7 @@ class OrganizationController extends Controller
         $org->save();
 
         $orgOfficials = [];
-        foreach ($request->input('officialls') as $official) {
+        foreach ($request->input('officials') as $official) {
             $orgofficial = OrganizationOfficial::create([
                 'occupation' => $official['occupation'],
                 'name' => $official['name'],

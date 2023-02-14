@@ -38,7 +38,7 @@ class BudgetController extends Controller
 
     public function indexYear()
     {
-        $year = Budget::query()->distinct()->get();
+        $year = Budget::query()->lazy()->distinct()->select('year')->get();
 
         return SendResponse::handle($year, 'data berhasil diambil');
     }

@@ -39,10 +39,13 @@ class BudgetController extends Controller
 
     public function indexYear()
     {
-        $year = Budget::query()->distinct()->select('year')->get();
-        $flat = Arr::flatten($year);
+        $years = Budget::query()->distinct()->select('year')->get();
+        $flatten = [];
 
-        return SendResponse::handle($flat, 'data berhasil diambil');
+        foreach ($years as $year) {
+            $flatten[] = $year['year'];
+        }
+        return SendResponse::handle($flatten, 'data berhasil diambil');
     }
 
     public function index(Request $request)

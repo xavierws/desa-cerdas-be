@@ -7,6 +7,7 @@ use App\Actions\SendResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Budget;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class BudgetController extends Controller
 {
@@ -38,9 +39,10 @@ class BudgetController extends Controller
 
     public function indexYear()
     {
-        $year = Budget::query()->lazy()->distinct()->select('year')->get();
+        $year = Budget::query()->distinct()->select('year')->get();
+        $flat = Arr::flatten($year);
 
-        return SendResponse::handle($year, 'data berhasil diambil');
+        return SendResponse::handle($flat, 'data berhasil diambil');
     }
 
     public function index(Request $request)

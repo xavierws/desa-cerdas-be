@@ -36,6 +36,13 @@ class BudgetController extends Controller
         ], 'apbdes berhasil dibuat');
     }
 
+    public function indexYear()
+    {
+        $year = Budget::query()->distinct()->select('year')->get();
+
+        return SendResponse::handle($year, 'data berhasil diambil');
+    }
+
     public function index(Request $request)
     {
         $categoryId = BudgetHelper::idCategory($request->query('category'));
@@ -66,8 +73,20 @@ class BudgetController extends Controller
         ], 'data berhasil diambil');
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $categoryId = BudgetHelper::idCategory($request->input('category'));
+
+        $budgets = Budget::query()->where([
+            ['category_id', $categoryId],
+            ['year', $request->input('year')]
+        ])->get();
+
         
+    }
+
+    public function destroy()
+    {
+
     }
 }

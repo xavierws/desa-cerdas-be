@@ -122,7 +122,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('/budget')->group(function () {
             Route::post('/store', [BudgetController::class, 'store']);
             Route::get('/index', [BudgetController::class, 'index']);
-            Route::get('/year/index', [BudgetController::class, 'indexYear']);
+            Route::get('/years', [BudgetController::class, 'indexYear']);
         });
     });
 });

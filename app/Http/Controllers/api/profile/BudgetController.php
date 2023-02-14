@@ -38,7 +38,7 @@ class BudgetController extends Controller
 
     public function indexYear()
     {
-        $year = Budget::query()->distinct()->select('year')->get();
+        $year = Budget::query()->distinct()->get();
 
         return SendResponse::handle($year, 'data berhasil diambil');
     }
@@ -82,7 +82,7 @@ class BudgetController extends Controller
             ['year', $request->input('year')]
         ])->get();
 
-        
+
     }
 
     public function destroy()

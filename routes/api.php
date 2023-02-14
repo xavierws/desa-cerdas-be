@@ -116,6 +116,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('/index', [OrganizationController::class, 'index']);
             Route::get('/{orgId}', [OrganizationController::class, 'show']);
             Route::put('/update', [OrganizationController::class, 'update']);
+            Route::delete('/official/delete', [OrganizationController::class, 'destroyOfficial']);
+            Route::delete('/delete', [OrganizationController::class, 'destroy']);
         });
         Route::prefix('/budget')->group(function () {
             Route::post('/store', [BudgetController::class, 'store']);

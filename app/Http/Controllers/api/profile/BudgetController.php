@@ -12,13 +12,7 @@ class BudgetController extends Controller
 {
     public function store(Request $request)
     {
-        if ($request->input('category') === 'pendapatan') {
-            $categoryId = 1;
-        } elseif ($request->input('category') === 'belanja') {
-            $categoryId = 2;
-        } else {
-            $categoryId = 3;
-        }
+        $categoryId = BudgetHelper::idCategory($request->input('category'));
 
         $budgets = [];
         $totalCost = 0;
@@ -70,5 +64,10 @@ class BudgetController extends Controller
             'total_cost' => $totalCost,
             'apbdes' => $budgets
         ], 'data berhasil diambil');
+    }
+
+    public function update()
+    {
+        
     }
 }

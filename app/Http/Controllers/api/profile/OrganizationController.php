@@ -87,4 +87,23 @@ class OrganizationController extends Controller
             'officials' => $orgOfficials,
         ], 'data organisasi berhasil diubah');
     }
+
+    public function destroyOfficial(Request $request)
+    {
+        $deleted = OrganizationOfficial::query()
+            ->find($request->input('id'))
+            ->delete();
+
+        return SendResponse::handle($deleted, 'data berhasil dihapus');
+    }
+
+    public function destroy(Request $request)
+    {
+        $org = Organization::with('officials')->find($request->input('org_id'));
+
+        $org->officials->delete();
+        $org->delete();
+
+        return SendResponse::handle($org, 'Organisasi berhasil dihapus');
+    }
 }

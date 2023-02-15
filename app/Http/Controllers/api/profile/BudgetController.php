@@ -80,18 +80,20 @@ class BudgetController extends Controller
 
     public function update(Request $request)
     {
-        $categoryId = BudgetHelper::idCategory($request->input('category'));
+        $budget = Budget::query()->find($request->input('id'));
 
-        $budgets = Budget::query()->where([
-            ['category_id', $categoryId],
-            ['year', $request->input('year')]
-        ])->get();
+        $budget->name = $request->input('name');
+        $budget->description = $request->input('description');
+        $budget->cost = $request->input('cost');
+        $budget->save();
 
-
+        return SendResponse::handle($budget, 'data berhasil diubah');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $deleted = Budget::query()->find($request->input('id'))->delete();
 
+        return SendResponse::handle($deleted, 'data berhasil dihapus');
     }
 }

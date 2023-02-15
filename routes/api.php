@@ -123,6 +123,8 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::post('/store', [BudgetController::class, 'store']);
             Route::get('/index', [BudgetController::class, 'index']);
             Route::get('/years', [BudgetController::class, 'indexYear']);
+            Route::put('/update', [BudgetController::class, 'update']);
+            Route::delete('/delete', [BudgetController::class, 'destroy']);
         });
     });
 });

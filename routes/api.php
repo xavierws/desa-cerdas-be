@@ -13,6 +13,7 @@ use App\Http\Controllers\WisataController;
 use App\Http\Controllers\api\facility\FacilityController;
 use App\Http\Controllers\api\profile\OrganizationController;
 use App\Http\Controllers\api\profile\BudgetController;
+use App\Http\Controllers\api\market\CourierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +66,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/update/{productId}', [ProductController::class, 'update']);
     });
 
+    //Courier Management
+    Route::prefix('/courier')->group(function () {
+        Route::post('/store', [CourierController::class, 'store']);
+        Route::get('/', [CourierController::class, 'index']);
+    });
+
     //Order Management
     Route::prefix('/order')->group(function () {
         Route::post('/checkout', [OrderController::class, 'store']);
@@ -105,6 +112,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/delete', [FacilityController::class, 'destroy']);
     });
 
+    //information management
     Route::prefix('/information')->group(function () {
         Route::prefix('/village')->group(function () {
             Route::post('/store', [InformationController::class, 'store']);
